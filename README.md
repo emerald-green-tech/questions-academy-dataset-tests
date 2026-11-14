@@ -6,17 +6,12 @@ are in separate repositories, the names of which start with `questions-academy-d
 *   [questions-academy-dataset-opentriviaqa]
 *   [questions-academy-dataset-questions-academy]
 
-
-
 Schema validation tests for Questions Academy datasets.
 
 ## Usage ##
 
-
-```
-pytest --log-cli-level INFO
-pytest --log-cli-level DEBUG
-```
+This repository is configured as a Git submodule for the separate dataset repositories. Usage instructions are included
+with those repositories.
 
 <!-- Links -->
 [Questions Academy]: https://questions.academy/

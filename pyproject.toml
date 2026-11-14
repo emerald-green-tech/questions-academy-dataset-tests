@@ -1,0 +1,11 @@
+[project]
+name = "questions-academy-dataset-tests"
+description = "Schema tests and spell checking for Questions Academy datasets."
+version = "0.0.1"
+
+dependencies = [
+    "pytest",
+    "ruamel.yaml",
+    "markdown",
+    "chunspell",
+]

@@ -8,4 +8,5 @@ dependencies = [
     "ruamel.yaml",
     "markdown",
     "chunspell",
+    "jsonschema",
 ]

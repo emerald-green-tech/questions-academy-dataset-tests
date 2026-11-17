@@ -3,6 +3,13 @@ from pathlib import Path
 import pytest
 
 
+def pytest_addoption(parser):
+    parser.addoption(
+        "--category",
+        help="Run tests only for this YAML category name, without the .yaml extension",
+    )
+
+
 @pytest.fixture(scope="session")
 def yaml_dir() -> Path:
     """
@@ -22,5 +29,15 @@ def yaml_dir() -> Path:
 
 
 @pytest.fixture(scope="session")
-def category_paths(yaml_dir: Path) -> list[Path]:
-    return list(yaml_dir.glob("*.yaml"))
+def category_paths(request: pytest.FixtureRequest, yaml_dir: Path) -> list[Path]:
+    paths = list(yaml_dir.glob("*.yaml"))
+    category = request.config.getoption("--category")
+
+    if category is None:
+        return paths
+
+    matches = [path for path in paths if path.stem == category]
+    if not matches:
+        raise pytest.UsageError(f"No YAML file for category {category!r} in {yaml_dir}")
+
+    return matches
